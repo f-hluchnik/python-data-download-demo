@@ -1,14 +1,12 @@
-from dotenv import load_dotenv
 from src.APIClient import APIClient
 from src.DataProcessor import DataProcessor
 from src.FileWriter import FileWriter
 import logging
 
 def main():
-    load_dotenv()
     
-    api_url = "https://www.example.com"
-    file_path = "output"
+    api_url = "https://api.adviceslip.com/advice"
+    file_path = "output/advices.avro"
 
     api_client = APIClient(api_url)
     data = api_client.fetch_data()

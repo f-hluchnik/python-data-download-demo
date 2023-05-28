@@ -3,4 +3,4 @@ class DataProcessor:
         """
         Process the given data.
         """
-        return data
+        return [data["slip"]]
