@@ -1,0 +1,10 @@
+version: '3'
+services:
+  api_client:
+    env_file: .env
+    container_name: api_client
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      API_KEY: ${API_KEY}
