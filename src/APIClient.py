@@ -13,7 +13,5 @@ class APIClient:
         if response.status_code == requests.codes.ok:
             logging.info("Data download successful.")
             return response.json()
-        logging.error(
-            "Failed to fetch the data. Status code: %d", response.status_code
-        )
+        logging.error("Failed to fetch the data. Status code: %d", response.status_code)
         response.raise_for_status()
