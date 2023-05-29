@@ -1,5 +1,5 @@
 class DataProcessor:
-    def process_data(self, data: dict) -> list | None:
+    def process_data(self, data: dict) -> list:
         """
         Process the given data.
         """
@@ -7,4 +7,4 @@ class DataProcessor:
             return [data["slip"]]
         if "message" in data:
             raise Exception("An exception occurred.", str(data))
-        raise Exception("An unknown exception occurred.")
+        raise Exception("Received an unsupported data structure.")

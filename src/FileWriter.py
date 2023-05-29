@@ -4,9 +4,7 @@ from fastavro import parse_schema, writer
 
 
 class FileWriter:
-    def __init__(self, file_path: str) -> None:
-        self.file_path = file_path
-        schema = {
+    schema = {
             "doc": "A piece of advice.",
             "name": "Advice",
             "namespace": "advices",
@@ -16,17 +14,15 @@ class FileWriter:
                 {"name": "advice", "type": "string"},
             ],
         }
-        self.parsed_schema = parse_schema(schema)
+    
+    def __init__(self, file_path: str) -> None:
+        self.file_path = file_path
+        self.parsed_schema = parse_schema(FileWriter.schema)
 
     def write_to_file(self, data: list) -> None:
         """Write provided data to file. If the file already exists, data are appended to it."""
 
-        if os.path.exists(self.file_path):
-            mode = "a+b"
-            schema = None
-        else:
-            mode = "wb"
-            schema = self.parsed_schema
+        mode = "a+b" if os.path.exists(self.file_path) else "wb"
 
         with open(self.file_path, mode) as file:
-            writer(file, schema, data)
+            writer(file, self.parsed_schema, data)

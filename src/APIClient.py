@@ -17,4 +17,3 @@ class APIClient:
             "Failed to fetch the data. Status code: %d", response.status_code
         )
         response.raise_for_status()
-        return {}
